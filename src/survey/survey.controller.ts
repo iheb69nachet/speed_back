@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param } from '@nestjs/common';
 import { SurveyService } from './survey.service';
 import { Survey, SurveyStatus } from '../survey.entity';
+import { UpdateSurveyDto } from './dto/update-survey.dto';
 
 @Controller('survey')
 export class SurveyController {
@@ -9,6 +10,11 @@ export class SurveyController {
   @Post()
   create(@Body() survey: Omit<Survey, 'id' | 'status'>): Promise<Survey> {
     return this.surveyService.create(survey);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateSurveyDto: UpdateSurveyDto): Promise<Survey> {
+    return this.surveyService.update(Number(id), updateSurveyDto);
   }
 
   @Get()

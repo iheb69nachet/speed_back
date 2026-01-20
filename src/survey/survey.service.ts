@@ -44,4 +44,15 @@ export class SurveyService {
   async updateStatus(ids: number[], status: SurveyStatus): Promise<void> {
     await this.surveyRepository.update({ id: In(ids) }, { status });
   }
+
+  async update(id: number, survey: Partial<Survey>): Promise<Survey> {
+    const existingSurvey = await this.surveyRepository.preload({
+      id,
+      ...survey,
+    });
+    if (!existingSurvey) {
+      throw new Error(`Survey with ID ${id} not found`);
+    }
+    return this.surveyRepository.save(existingSurvey);
+  }
 }
