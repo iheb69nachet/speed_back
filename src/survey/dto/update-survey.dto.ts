@@ -1,5 +1,5 @@
 import { IsString, IsOptional, IsEnum, IsInt, IsNumber } from 'class-validator';
-import { ContactType, SurveyStatus } from '../survey.entity';
+import { ContactType, SurveyStatus } from 'src/survey.entity';
 
 export class UpdateSurveyDto {
   @IsOptional()
