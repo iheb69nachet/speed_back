@@ -55,4 +55,8 @@ export class SurveyService {
     }
     return this.surveyRepository.save(existingSurvey);
   }
+
+  async deleteArchived(ids: number[]): Promise<void> {
+    await this.surveyRepository.delete({ id: In(ids) });
+  }
 }

@@ -31,6 +31,10 @@ export class SurveyController {
   archive(@Body('ids') ids: number[]): Promise<void> {
     return this.surveyService.updateStatus(ids, SurveyStatus.ARCHIVED);
   }
+    @Post('delete-archive')
+  deleteArchive(@Body('ids') ids: number[]): Promise<void> {
+    return this.surveyService.deleteArchived(ids);
+  }
 
   @Post('unarchive')
   unarchive(@Body('ids') ids: number[]): Promise<void> {
