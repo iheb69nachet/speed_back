@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, BeforeInsert } from 'typeorm';
 
 export enum SurveyStatus {
   ACTIVE = 'active',
@@ -69,6 +69,14 @@ export class Survey {
   @Column()
   agent: string;
 
-  @CreateDateColumn()
+  @Column()
   created_at: Date;
+
+  @BeforeInsert()
+  setCreatedAt() {
+    const now = new Date();
+    // Add 2 hours for GMT+2
+    now.setHours(now.getHours() + 2);
+    this.created_at = now;
+  }
 }

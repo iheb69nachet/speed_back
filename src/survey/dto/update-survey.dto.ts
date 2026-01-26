@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import { IsString, IsOptional, IsEnum, IsInt, IsNumber, IsDate } from 'class-validator';
 import { ContactType, SurveyStatus } from 'src/survey.entity';
 
@@ -73,7 +74,5 @@ export class UpdateSurveyDto {
   @IsOptional()
   @IsString()
   agent?: string;
-  @IsOptional()
-  @IsDate()
-  created_at?: Date;
+ 
 }
