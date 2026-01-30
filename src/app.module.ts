@@ -7,13 +7,15 @@ import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { SurveyModule } from './survey/survey.module';
 import { Survey } from './survey.entity';
+import { Agent } from './agent.entity';
+import { AgentModule } from './agent/agent.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Survey],
+      entities: [User, Survey, Agent],
       synchronize: true,
     }),
     UsersModule,
@@ -22,6 +24,7 @@ import { Survey } from './survey.entity';
       signOptions: { expiresIn: '60m' },
     }),
     SurveyModule,
+    AgentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
