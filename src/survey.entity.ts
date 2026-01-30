@@ -72,11 +72,5 @@ export class Survey {
   @Column()
   created_at: Date;
 
-  @BeforeInsert()
-  setCreatedAt() {
-    const now = new Date();
-    // Add 2 hours for GMT+2
-    now.setHours(now.getHours() + 2);
-    this.created_at = now;
-  }
+
 }
