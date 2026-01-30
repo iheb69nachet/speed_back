@@ -52,8 +52,8 @@ export class UpdateSurveyDto {
   purchaser?: string;
 
   @IsOptional()
-  @IsInt()
-  birth_year?: number;
+  @IsString()
+  birth_year?: string;
 
   @IsOptional()
   @IsString()

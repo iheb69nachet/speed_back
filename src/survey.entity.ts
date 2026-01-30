@@ -51,8 +51,8 @@ export class Survey {
   @Column()
   purchaser: string;
 
-  @Column({ type: 'integer', nullable: true })
-  birth_year: number;
+  @Column({  nullable: true })
+  birth_year: string;
 
   @Column()
   employment_status: string;
