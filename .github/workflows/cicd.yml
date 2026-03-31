@@ -19,7 +19,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: moubarmijoun
-          password: moubarmijoun.dev@gmail.com
+          password: dckr_pat_4H7Y3bA3_9Ba2iKCSS-LpsrW6uY
       - name: check branch name
         run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
       - name: Build image and push to Docker Hub and GitHub Container Registry
